@@ -30,6 +30,10 @@ function App() {
         <div className="date-display">
           {formatDate(dateTime)}
         </div>
+        <div className="env-display" style={{ marginTop: '20px', padding: '10px', border: '2px solid #000', backgroundColor: '#f0f0f0' }}>
+          <p><strong>Name:</strong> {import.meta.env.VITE_NAME}</p>
+          <p><strong>Developer:</strong> {import.meta.env.VITE_DEVELOPER}</p>
+        </div>
       </div>
     </div>
   )

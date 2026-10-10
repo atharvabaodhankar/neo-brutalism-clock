@@ -21,11 +21,13 @@ function App() {
     return date.toLocaleTimeString('en-US', { hour12: false })
   }
 
+  const [hours, minutes, seconds] = formatTime(dateTime).split(':')
+
   return (
     <div className="container">
       <div className="clock-box">
         <div className="time-display">
-          {formatTime(dateTime)}
+          {hours}:{minutes}:<span>{seconds}</span>
         </div>
         <div className="date-display">
           {formatDate(dateTime)}

@@ -55,6 +55,26 @@ body {
   cursor: pointer;
 }
 
+.seconds-toggle {
+  margin: 0 0 20px 12px;
+  padding: 10px 16px;
+  border: 4px solid #000;
+  background: #ffde59;
+  box-shadow: 6px 6px 0 #000;
+  color: #000;
+  font-family: 'Courier New', monospace;
+  font-size: 18px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.seconds-toggle:hover,
+.seconds-toggle:focus-visible {
+  background: #ffcc00;
+  outline: 3px solid #000;
+  outline-offset: 3px;
+}
+
 .date-display {
   font-size: 28px;
   font-weight: 700;

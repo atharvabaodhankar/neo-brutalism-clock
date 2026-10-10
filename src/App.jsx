@@ -4,6 +4,7 @@ import './App.css'
 function App() {
   const [dateTime, setDateTime] = useState(new Date())
   const [is24Hour, setIs24Hour] = useState(false)
+  const [showSeconds, setShowSeconds] = useState(true)
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -19,7 +20,12 @@ function App() {
   }
 
   const formatTime = (date) => {
-    return date.toLocaleTimeString('en-US', { hour12: !is24Hour })
+    return date.toLocaleTimeString('en-US', {
+      hour: 'numeric',
+      minute: '2-digit',
+      ...(showSeconds && { second: '2-digit' }),
+      hour12: !is24Hour,
+    })
   }
 
   return (
@@ -35,6 +41,13 @@ function App() {
           aria-pressed={is24Hour}
           onClick={() => setIs24Hour(!is24Hour)}
         >{is24Hour ? '24H' : '12H'}</button>
+        <button
+          className="seconds-toggle"
+          type="button"
+          aria-label={`${showSeconds ? 'Hide' : 'Show'} seconds`}
+          aria-pressed={showSeconds}
+          onClick={() => setShowSeconds(!showSeconds)}
+        >{showSeconds ? 'SECONDS ON' : 'SECONDS OFF'}</button>
         <div className="date-display">
           {formatDate(dateTime)}
         </div>

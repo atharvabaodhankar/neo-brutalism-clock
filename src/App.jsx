@@ -3,6 +3,7 @@ import './App.css'
 
 function App() {
   const [dateTime, setDateTime] = useState(new Date())
+  const [is24Hour, setIs24Hour] = useState(false)
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -18,7 +19,7 @@ function App() {
   }
 
   const formatTime = (date) => {
-    return date.toLocaleTimeString('en-US', { hour12: true })
+    return date.toLocaleTimeString('en-US', { hour12: !is24Hour })
   }
 
   return (
@@ -27,6 +28,13 @@ function App() {
         <div className="time-display">
           {formatTime(dateTime)}
         </div>
+        <button
+          className="format-toggle"
+          type="button"
+          aria-label={`Switch to ${is24Hour ? '12-hour' : '24-hour'} format`}
+          aria-pressed={is24Hour}
+          onClick={() => setIs24Hour(!is24Hour)}
+        >{is24Hour ? '24H' : '12H'}</button>
         <div className="date-display">
           {formatDate(dateTime)}
         </div>

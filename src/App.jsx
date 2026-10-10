@@ -3,6 +3,7 @@ import './App.css'
 
 function App() {
   const [dateTime, setDateTime] = useState(new Date())
+  const [use12Hour, setUse12Hour] = useState(false)
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -18,7 +19,7 @@ function App() {
   }
 
   const formatTime = (date) => {
-    return date.toLocaleTimeString('en-US', { hour12: false })
+    return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: use12Hour })
   }
 
   return (
@@ -27,6 +28,9 @@ function App() {
         <div className="time-display">
           {formatTime(dateTime)}
         </div>
+        <button onClick={() => setUse12Hour(!use12Hour)}>
+          Switch to {use12Hour ? '24-hour' : '12-hour'} format
+        </button>
         <div className="date-display">
           {formatDate(dateTime)}
         </div>

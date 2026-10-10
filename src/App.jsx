@@ -3,6 +3,17 @@ import './App.css'
 
 function App() {
   const [dateTime, setDateTime] = useState(new Date())
+  const [darkMode, setDarkMode] = useState(() => {
+    const savedTheme = localStorage.getItem('darkMode')
+    return savedTheme === null
+      ? window.matchMedia('(prefers-color-scheme: dark)').matches
+      : savedTheme === 'true'
+  })
+
+  useEffect(() => {
+    document.body.classList.toggle('dark-mode', darkMode)
+    localStorage.setItem('darkMode', darkMode)
+  }, [darkMode])
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -24,6 +35,13 @@ function App() {
   return (
     <div className="container">
       <div className="clock-box">
+        <button
+          className="theme-toggle"
+          onClick={() => setDarkMode(!darkMode)}
+          aria-label={`Switch to ${darkMode ? 'light' : 'dark'} mode`}
+        >
+          {darkMode ? 'LIGHT MODE' : 'DARK MODE'}
+        </button>
         <div className="time-display">
           {formatTime(dateTime)}
         </div>

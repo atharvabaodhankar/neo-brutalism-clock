@@ -18,7 +18,7 @@ function App() {
   }
 
   const formatTime = (date) => {
-    return date.toLocaleTimeString('en-US', { hour12: false })
+    return date.toLocaleTimeString('en-US', { hour12: true })
   }
 
   return (

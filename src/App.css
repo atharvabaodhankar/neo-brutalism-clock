@@ -42,7 +42,7 @@ body {
   text-transform: uppercase;
 }
 
-.format-toggle {
+.format-toggle, .seconds-toggle {
   margin-bottom: 20px;
   padding: 10px 16px;
   border: 4px solid #000;
